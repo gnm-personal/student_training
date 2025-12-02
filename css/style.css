@@ -16,6 +16,13 @@
   background-color: blue;
 }
 
+.logo a {
+  height: 100%;
+  width: 100%;
+  display:flex;
+  justify-content: center;
+}
+
 .menu {
   width: 75%;
   height: 100%;
