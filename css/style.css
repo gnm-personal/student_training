@@ -46,6 +46,10 @@
   justify-content: space-around;
 }
 
+.menubar ul li {
+  list-style: none;
+}
+
 .menu .mobilebar {
   height: 100%;
   width: 0%;
