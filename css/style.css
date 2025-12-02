@@ -50,6 +50,10 @@
   list-style: none;
 }
 
+.menubar ul li a {
+  text-decoration: none;
+}
+
 .menu .mobilebar {
   height: 100%;
   width: 0%;
