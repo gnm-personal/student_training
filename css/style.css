@@ -49,6 +49,7 @@
 
 .menubar ul li {
   list-style: none;
+  padding-bottom: 3%;
 }
 
 .menubar ul li a {
