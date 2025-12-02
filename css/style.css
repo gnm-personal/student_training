@@ -23,8 +23,23 @@
   justify-content: center;
 }
 
+.logo a img {
+  width: auto;
+  height: auto;
+}
+
 .menu {
   width: 75%;
   height: 100%;
   background-color: green;
+}
+
+.menu .menubar {
+  height: 100%;
+  width: 100%'; 
+}
+
+.menu .mobilebar {
+  height: 100%;
+  width: 0%;
 }
