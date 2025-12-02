@@ -54,6 +54,7 @@
   text-decoration: none;
   color: magenta;
   font-size: 1.5vw;
+  position: absolute;
 }
 
 .menu .mobilebar {
