@@ -39,7 +39,16 @@
   width: 100%'; 
 }
 
+.menu .menubar ul {
+  width: 100%;
+  height: 100%;
+  display:flex;
+  
+}
+
 .menu .mobilebar {
   height: 100%;
   width: 0%;
 }
+
+
