@@ -59,6 +59,33 @@
   position: absolute;
 }
 
+.menubar .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: black;
+  min-width: 160px;
+}
+
+.menubar li:hover > .submenu{
+  display: block;
+}
+
+/* SUBMENU LINKS */
+.submenu li a{
+  color: white;
+  padding: 10px 14px;
+  display: block;
+  text-decoration: none;
+}
+
+/* NESTED dropdown (level 2) */
+.submenu .submenu{
+  top: 0;
+  left: 100%;
+}
+
 .menu .mobilebar {
   height: 100%;
   width: 0%;
