@@ -5,9 +5,9 @@
 
 .header {
   width: 100%;
-  height: 10%;
+  height: 80px;              /* 10% ki jagah fixed height better */
   background-color: red;
-  display:flex;
+  display: flex;
 }
 
 .logo {
@@ -19,13 +19,14 @@
 .logo a {
   height: 100%;
   width: 100%;
-  display:flex;
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .logo a img {
-  width: auto;
-  height: auto;
+  max-width: 80%;
+  max-height: 80%;
 }
 
 .menu {
@@ -34,65 +35,67 @@
   background-color: green;
 }
 
-.menu .menubar {
-  height: 100%;
-  width: 100%; 
-}
-
-.menu .menubar ul {
+/* sirf TOP LEVEL ul ko flex banaao */
+.menu .menubar > ul {
   width: 100%;
   height: 100%;
-  display:flex;
+  display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
+/* common li */
 .menubar ul li {
   list-style: none;
-  padding-bottom: 3%;
+  position: relative;           /* submenu iske relative position pe open hoga */
 }
 
-.menubar ul li a {
+/* TOP LEVEL LINKS */
+.menubar > ul > li > a {
   text-decoration: none;
   color: magenta;
   font-size: 1.5vw;
-  position: absolute;
+  /* position: absolute;  <-- ye hatao, ye hi layout bigaad raha tha */
+  padding: 4px 8px;
+  white-space: nowrap;          /* line break na ho */
 }
 
-.menubar .submenu {
-  display: none;
+/* SUBMENU UL */
+.submenu {
   position: absolute;
-  top: 100%;
+  top: 100%;                    /* parent li ke just niche */
   left: 0;
-  background: black;
+  background: #fff;
   min-width: 160px;
+  display: none;                /* by default hidden */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 999;
 }
 
-.menubar li:hover > .submenu{
-  display: block;
-}
-
+/* submenu items vertically */
 .submenu li {
-  position: relative;
+  padding: 0;                   /* remove extra bottom padding */
 }
 
-/* SUBMENU LINKS */
-.submenu li a{
-  color: white;
-  padding: 10px 14px;
+.submenu li a {
   display: block;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333;
   text-decoration: none;
+  white-space: nowrap;
 }
 
-/* NESTED dropdown (level 2) */
-.submenu .submenu{
-  top: 0;
-  left: 100%;
+.submenu li a:hover {
+  background: #eee;
+}
+
+/* HOVER pe submenu dikhana */
+.menubar ul li:hover > .submenu {
+  display: block;
 }
 
 .menu .mobilebar {
   height: 100%;
   width: 0%;
 }
-
-
