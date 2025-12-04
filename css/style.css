@@ -75,6 +75,8 @@
 }
 
 .menu .menubar ul li .submenu ul {
+  height: auto;
+  width: 120px;
   display:flex;
   flex-direction: column;
 }
