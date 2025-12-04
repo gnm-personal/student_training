@@ -64,4 +64,37 @@
   width: 0%;
 }
 
+.submenu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: white;
+  min-width: 160px;
+  padding: 4px 0;
+  list-style: none;
+  display: none;
+  z-index: 999;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
 
+.submenu li {
+  padding: 0;
+}
+
+.submenu li a {
+  position: static;
+  display: block;
+  padding: 6px 12 px;
+  color: black;
+  font-size: 0.5vw;
+  text-decoration: none;
+  white-space: no-wrap;
+}
+
+.menubar li a:hover .submenu {
+  display: block;
+}
+
+.menubar ul li a .submenu ul li {
+  min-height: 32px;
+}
