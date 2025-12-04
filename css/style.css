@@ -91,6 +91,6 @@
   position: relative; 
 }
 
-.menubar ul li a:hover .submenu {
+.menubar ul li:hover .submenu {
   display: block;
 }
