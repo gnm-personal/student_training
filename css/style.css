@@ -64,7 +64,7 @@
   width: 0%;
 }
 
-.submenu {
+.menu .menubar ul li .submenu {
   display: none;
   position: absolute;
   background-color: magenta;
