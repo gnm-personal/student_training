@@ -65,5 +65,28 @@
 }
 
 .submenu {
-  
+  display: none;
+  position: absolute;
+  background-color: magenta;
+  min-width: 25%;
+  border: 1px solid black;
+  /* padding-left: 5px; */
+  z-index: 10;
+}
+
+.submenu ul li {
+  list-style: none;
+  padding: 5px 10px;
+  text-align: left;
+}
+
+.submenu ul li a{
+  color: black;
+  font-size: 1vw;
+  text-decoration: none;
+  position: relative; 
+}
+
+.menubar ul li a:hover .submenu {
+  display: block;
 }
