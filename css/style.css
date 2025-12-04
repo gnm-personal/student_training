@@ -70,23 +70,17 @@
   background-color: magenta;
   min-width: 120px;
   border: 1px solid black;
+  
   /* padding-left: 5px; */
   z-index: 10;
 }
 
-.menu .menubar ul li .submenu ul {
-  height: auto;
-  width: 120px;
-  display:flex;
-  flex-direction: column;
-}
-
-.menu .menubar ul li .submenu ul li {
+.menu .menubar ul li .submenu li {
   list-style: none;
   padding: 5px 10px;
 }
 
-.menu .menubar ul li .submenu ul li a{
+.menu .menubar ul li .submenu li a{
   color: black;
   font-size: 1vw;
   text-decoration: none;
