@@ -74,17 +74,17 @@
   z-index: 10;
 }
 
-.submenu ul {
+.menu .menubar ul li .submenu ul {
   display:flex;
   flex-direction: column;
 }
 
-.submenu ul li {
+.menu .menubar ul li .submenu ul li {
   list-style: none;
   padding: 5px 10px;
 }
 
-.submenu ul li a{
+.menu .menubar ul li .submenu ul li a{
   color: black;
   font-size: 1vw;
   text-decoration: none;
