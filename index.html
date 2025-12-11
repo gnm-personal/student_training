@@ -25,10 +25,11 @@
       links.forEach(link => {
         //pehle  anchor tag ka href ki value save karenge
         let linkPage = link.getAttribute("href");
+        console.log("Attribute Value: " , linkPage);
         if(!linkPage) return;
 
         if (linkPage == currentPage) {
-          link.closest("li").clasList.add("underline_current");
+          link.closest("li").classList.add("underline_current");
         }
         
         
