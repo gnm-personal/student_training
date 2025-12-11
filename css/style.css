@@ -38,7 +38,7 @@
     justify-content:space-around;
 }
 .menu ul li{
-    list-style-type:none; 
+    list-style:none; 
     padding-bottom:3.5%;
     position:relative;
 }
