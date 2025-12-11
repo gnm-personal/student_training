@@ -19,10 +19,9 @@
       // menu me anchor tak pahuchne ka tareeka
       let links = document.querySelectorAll(".menu .menubar ul li a");
 
-      console.log("Current Page: " , currentPage);
-
       // hr anchor tag ko process karenge
       links.forEach(link => {
+        console.log("Current page:", currentPage);
         //pehle  anchor tag ka href ki value save karenge
         let linkPage = link.getAttribute("href");
         console.log("Attribute Value: " , linkPage);
