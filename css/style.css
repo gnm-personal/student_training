@@ -90,7 +90,9 @@
             display:block;
         }
 
-
+.underline_current > a {
+        text-decoration: underline;
+}
 
 @media (max-width:576px){
         .navbar{
