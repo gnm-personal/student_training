@@ -92,6 +92,7 @@
 
 .underline_current > a {
         text-decoration: underline;
+        text-decoration-color: red;
 }
 
 @media (max-width:576px){
