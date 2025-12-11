@@ -14,6 +14,27 @@
       .then(data => {
         document.getElementById("header").innerHTML = data;
       });
+
+      let currentPage = window.location.pathname.split("/").pop();
+      // menu me anchor tak pahuchne ka tareeka
+      let links = document.querySelectorAll(".menu .menubar ul li a");
+
+      console.log("Current Page: " , currentPage);
+
+      // hr anchor tag ko process karenge
+      links.forEach(link => {
+        //pehle  anchor tag ka href ki value save karenge
+        let linkPage = link.getAttribute("href");
+        if(!linkPage) return;
+
+        if (linkPage == currentPage) {
+          link.closest("li").clasList.add("underline_current");
+        }
+        
+        
+      });
+      
+      
     </script>
   </body>
 </html>
