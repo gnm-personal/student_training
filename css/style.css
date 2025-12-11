@@ -73,6 +73,10 @@
   z-index: 10;
 }
 
+.menu .menubar ul li:hover .submenu {
+  display: block;
+}
+
 .menu .menubar ul .underline_current > a {
     text-decoration: underline;
     text-decoration-color: red;
