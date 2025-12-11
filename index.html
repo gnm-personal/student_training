@@ -8,17 +8,20 @@
     <div id="header">
       
     </div>
-    <script>
+    <script defer>
+      
       fetch("header.html")
       .then(res => res.text())
       .then(data => {
         document.getElementById("header").innerHTML = data;
       });
-
+      
       let currentPage = window.location.pathname.split("/").pop();
       // menu me anchor tak pahuchne ka tareeka
       let links = document.querySelectorAll(".menu .menubar ul li a");
-
+      if (!links) {
+        
+      }
       // hr anchor tag ko process karenge
       links.forEach(link => {
         console.log("Current page:", currentPage);
@@ -29,9 +32,7 @@
 
         if (linkPage == currentPage) {
           link.closest("li").classList.add("underline_current");
-        }
-        
-        
+        } 
       });
       
       
