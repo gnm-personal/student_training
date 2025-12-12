@@ -14,14 +14,8 @@
       .then(res => res.text())
       .then(data => {
         document.getElementById("header").innerHTML = data;
-        //     https://gnm-personal.github.io/student_training/null , #, index.html
-        // https:
-        // null
-        // gnm-personal.github.io
-        // student_training
-        // null
         let currentPage = window.location.pathname.split("/").pop();
-        if ( !currentPage or currentPage == "#" ) {
+        if ( !currentPage || currentPage == "#" ) {
           currentPage = "index.html";
         }
         // menu me anchor tak pahuchne ka tareeka
