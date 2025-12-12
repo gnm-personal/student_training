@@ -68,7 +68,6 @@
   display: none;
   position: absolute;
   top:10%;
-  left:0;
   background: magenta;
   border: 1px solid black;
   width: 120px;
@@ -86,6 +85,7 @@
 
 .menu .menubar ul li .submenu li a{
     font-size:16px;
+    color: white;
 }
 
 .menu .menubar ul li:hover .submenu {
