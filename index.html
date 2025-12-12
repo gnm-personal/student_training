@@ -3,38 +3,9 @@
     <title>This is college website build during training programe of the students</title>
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="js/menu.js" defer></script>
   </head>
   <body>
-    <div id="header">
-      
-    </div>
-    <script>
-      
-      fetch("header.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("header").innerHTML = data;
-        let currentPage = window.location.pathname.split("/").pop();
-        if ( !currentPage || currentPage == "#" ) {
-          currentPage = "index.html";
-        }
-        // menu me anchor tak pahuchne ka tareeka
-        let links = document.querySelectorAll(".menu .menubar ul li a");
-        // hr anchor tag ko process karenge
-        links.forEach(link => {
-          console.log("Current page:", currentPage);
-          //pehle  anchor tag ka href ki value save karenge
-          let linkPage = link.getAttribute("href");
-          console.log("Attribute Value: " , linkPage);
-          
-          if(!linkPage) return;
-  
-          if (linkPage == currentPage) {
-            link.closest("li").classList.add("underline_current");
-          } 
-        });
-      
-      });
-    </script>
+    <div id="header"></div>
   </body>
 </html>
