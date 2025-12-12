@@ -105,10 +105,12 @@
 
   .header .logo {
     width:50%;
+    background-color: white;
   }
 
   .header .menu {
     width:50%;
+    background-color: white;
   }
   
   .menu .menubar {
