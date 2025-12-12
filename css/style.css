@@ -113,9 +113,9 @@
     background-color: white;
   }
   
-  .menu .menubar {
+  /* .menu .menubar {
     display: none;
-  }
+  } */
   
   .menu .menubar ul {
     display:none;
