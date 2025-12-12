@@ -98,6 +98,10 @@
 }
 
 @media (max-width: 768px) {
+  .menu .menubar {
+    display: none;
+  }
+  
   .menu .menubar ul {
     display:none;
     flex-direction: column;
