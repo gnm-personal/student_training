@@ -79,12 +79,12 @@
   z-index: 10;
 }
 
-.submenu li{
+.menu .menubar ul li .submenu li{
   padding:8px;
   list-style:none;
 }
 
-.submenu li a{
+.menu .menubar ul li .submenu li a{
     font-size:16px;
 }
 
