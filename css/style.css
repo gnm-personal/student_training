@@ -67,7 +67,7 @@
 .menu .menubar ul li .submenu {
   display: none;
   position: absolute;
-  top:100%;
+  top:10%;
   left:0;
   background: magenta;
   border: 1px solid black;
