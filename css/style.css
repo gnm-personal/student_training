@@ -98,6 +98,19 @@
 }
 
 @media (max-width: 768px) {
+  .header {
+    height:5%;
+    background: white;
+  }
+
+  .header .logo {
+    width:50%;
+  }
+
+  .header .menu {
+    width:50%;
+  }
+  
   .menu .menubar {
     display: none;
   }
