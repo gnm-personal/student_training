@@ -123,8 +123,8 @@
       but need to show the impact
       to kids to understand the 
       visibility of the menu */
-    /* display:none;
-    flex-direction: column; */
+    display:none;
+    flex-direction: column;
     top: 0%;
     padding: 0px;
     width:100%;
