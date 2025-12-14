@@ -67,6 +67,7 @@ fetch("header.html")
 
           	// if toggle button not present, create it (only visible on mobile via CSS)
           	if (!li.querySelector(".submenu-toggle")) {
+				if(window.screensize <=576){
 	            const toggle = document.createElement("button");
 	            toggle.className = "submenu-toggle";
 	            toggle.setAttribute("aria-expanded", "false");
@@ -93,6 +94,7 @@ fetch("header.html")
 	                	if (t) t.setAttribute("aria-expanded", isOpen ? "true" : "false");
 	              	}
 	            });
+				}
 	        }
     	}
     });
