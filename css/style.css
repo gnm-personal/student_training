@@ -41,7 +41,7 @@
 
 .menu .menubar ul {
   width: 100%;
-  height: auto;
+  height: 100%;
   display:flex;
   justify-content: space-around;
   align-items: center;
@@ -106,6 +106,13 @@
   .header .logo {
     width:50%;
     background-color: white;
+  }
+
+  .header .logo a {
+    width:50%;
+    background-color: white;
+    justify-content: none;
+    padding-left: 20%;
   }
 
   .header .menu {
