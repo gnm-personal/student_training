@@ -76,10 +76,8 @@
 .menu .menubar ul li .submenu {
   display: none;
   position: absolute;
-  /* top:10%; */
-  top: 100%;              /* parent ke bilkul neeche */
-  left: 50%;              /* center point */
-  transform: translateX(-50%); /* center alignment fix */
+  top:10%;
+  transform: translateX(-50%);
   background: magenta;
   border: 1px solid black;
   width: 120px;
