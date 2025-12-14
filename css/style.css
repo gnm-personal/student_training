@@ -100,7 +100,11 @@
   color: white;
   text-align: center;
   display: inline-block;
-  width: 100%;
+  max-width: 100%;
+  /* position: absolute; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .menu .menubar ul li:hover .submenu {
