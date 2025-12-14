@@ -48,8 +48,8 @@
 }
 
 .menubar ul li {
+  position: relative;
   list-style: none;
-  /* padding-bottom: 3%; */
   height: 100%;  
   display: flex;
   align-items: center;
@@ -76,10 +76,12 @@
 .menu .menubar ul li .submenu {
   display: none;
   position: absolute;
-  top:10%;
+  top:100%;
+  left: 50%;
+  transform: translateX(-50%);
   background: magenta;
   border: 1px solid black;
-  width: 15%;
+  width: 150px;
   height: auto;
   flex-direction:column;
   padding:5px 0;
@@ -87,9 +89,7 @@
 }
 
 .menu .menubar ul li .submenu li{
-  padding:8px;
-  list-style:none;
-  padding-bottom: 10%;
+  list-style: none;
   padding: 8px 0;
   width: 100%;
   display: flex;
