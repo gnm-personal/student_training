@@ -203,8 +203,8 @@
 
   /* submenu behavior on mobile: initially hidden, revealed when li.has-submenu open */
   .menu .menubar ul li .submenu {
-    position: relative;
-    top: 0;
+    position: absolute;
+    top: 100%;
     left: 0;
     transform: none !important;
     width: 100%;
