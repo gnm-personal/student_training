@@ -50,6 +50,7 @@
 .menubar ul li {
   list-style: none;
   padding-bottom: 3%;
+  height: 100%;
 }
 
 .menubar ul li a {
