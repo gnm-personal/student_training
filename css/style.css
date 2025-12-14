@@ -113,9 +113,10 @@
     background-color: white;
   }
   
-  /* .menu .menubar {
-    display: none;
-  } */
+  .menu .menubar {
+    height: 0%;
+    width:0%;
+  }
   
   .menu .menubar ul {
     display:none;
