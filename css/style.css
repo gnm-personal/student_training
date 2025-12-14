@@ -79,7 +79,7 @@
   transform: translateX(-50%);
   background: magenta;
   border: 1px solid black;
-  width: 150px;
+  width: 200px;
   height: auto;
   flex-direction:column;
   padding:5px 0;
@@ -88,8 +88,8 @@
 
 .menu .menubar ul li .submenu li{
   list-style: none;
-  padding: 8px 0;
-  width: 100%;
+  padding: 8px 5%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center; 
@@ -212,7 +212,7 @@
     left: 0;
     transform: none !important;
     width: 100%;
-    background: black;
+    background: magenta;
     display: none;
     padding: 0px;
     box-shadow: none;
