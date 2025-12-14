@@ -119,10 +119,6 @@
   }
   
   .menu .menubar ul {
-    /* iska koi impact nhi padega
-      but need to show the impact
-      to kids to understand the 
-      visibility of the menu */
     display:none;
     flex-direction: column;
     top: 0%;
@@ -173,7 +169,7 @@
     display: flex;
     background: rgba(255,255,255,0.98);
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 0;
     right: 0;
     z-index: 999;
@@ -207,8 +203,7 @@
   .submenu-toggle {
     background: transparent;
     border: none;
-    font-size: 18px;
-    float: right;
+    font-size: 1.5vw;
     padding: 0 6px;
     cursor: pointer;
   }
