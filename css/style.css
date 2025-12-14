@@ -97,7 +97,7 @@
     text-decoration-color: red;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
   .header {
     height:5%;
     background: white;
