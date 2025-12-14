@@ -21,6 +21,7 @@ fetch("header.html")
     	} 
 	});
 
+	if (window.innerWidth <= 576) {
 	// Use the existing .mobilebar div to insert a hamburger
     const mobilebar = document.querySelector(".menu .mobilebar");
     const menuWrapper = document.querySelector(".menu");
@@ -86,7 +87,7 @@ fetch("header.html")
 	            // also allow parent link to toggle on small screens (prevent navigation)
 	            const parentLink = li.querySelector("a");
 	            parentLink && parentLink.addEventListener("click", function(ev) {
-	            	if (window.innerWidth <= 768) {
+	            	if (window.innerWidth <= 576) {
 	                	ev.preventDefault();
 	                	const isOpen = li.classList.toggle("open-submenu");
 	                	const t = li.querySelector(".submenu-toggle");
@@ -110,6 +111,7 @@ fetch("header.html")
           	s.style.display = "";
         });
 	});
+	}
 }) // end then
 .catch(err => {
     console.error("Header load failed:", err);
