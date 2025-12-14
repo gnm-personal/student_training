@@ -71,7 +71,7 @@ fetch("header.html")
 		            const toggle = document.createElement("button");
 		            toggle.className = "submenu-toggle";
 		            toggle.setAttribute("aria-expanded", "false");
-		            toggle.innerHTML = '<span style="display:inline-block; transform:rotate(0deg);">&#9654; &#9656; ▸</span>';
+		            toggle.innerHTML = '<span style="display:inline-block; transform:rotate(0deg);">&#9656;</span>';
 		            
 					// insert at end of li (after link)
 		            const firstLink = li.querySelector("a");
