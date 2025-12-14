@@ -77,7 +77,6 @@
   display: none;
   position: absolute;
   top:10%;
-  transform: translateX(-50%);
   background: magenta;
   border: 1px solid black;
   width: 120px;
