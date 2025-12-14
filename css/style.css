@@ -59,8 +59,6 @@
   text-decoration: none;
   color: magenta;
   font-size: 1.5vw;
-  /* position: absolute; */
-  /* height: 7%; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,7 +98,7 @@
 .menu .menubar ul li .submenu li a{
   font-size:1vw;
   color: white;
-  text-align: center;      /* NEW: fallback text centering */
+  text-align: center;
   display: inline-block;
   width: 100%;
 }
@@ -208,13 +206,15 @@
     position: relative;
     top: 0;
     left: 0;
+    transform: none !important;
     width: 100%;
     background: #f3cbe6; /* softer magenta */
     display: none;
-    padding: 8px 0;
+    padding: 0px;
     box-shadow: none;
     padding: 0px;
     padding-bottom: 0px;
+    display: none;
   }
 
   .menu .menubar ul li .submenu li a {
