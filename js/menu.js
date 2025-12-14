@@ -21,7 +21,6 @@ fetch("header.html")
     	} 
 	});
 
-	if (window.screensize <= 576) {
 	// Use the existing .mobilebar div to insert a hamburger
     const mobilebar = document.querySelector(".menu .mobilebar");
     const menuWrapper = document.querySelector(".menu");
@@ -111,7 +110,6 @@ fetch("header.html")
           	s.style.display = "";
         });
 	});
-	}
 }) // end then
 .catch(err => {
     console.error("Header load failed:", err);
