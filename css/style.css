@@ -40,7 +40,7 @@
 }
 
 .menu .menubar ul {
-  width: 100%;
+  width: 75%;
   height: 100%;
   display:flex;
   justify-content: space-around;
@@ -57,6 +57,7 @@
   color: magenta;
   font-size: 1.5vw;
   position: absolute;
+  height: 7%;
 }
 
 .menu .mobilebar {
@@ -84,8 +85,8 @@
 }
 
 .menu .menubar ul li .submenu li a{
-    font-size:1vw;
-    color: white;
+  font-size:1vw;
+  color: white;
 }
 
 .menu .menubar ul li:hover .submenu {
