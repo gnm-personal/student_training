@@ -18,7 +18,23 @@ fetch("header.html")
   
         if (linkPage == currentPage) {
       		link.closest("li").classList.add("underline_current");
-    	} 
+    	}
+
+		if (window.innerWidth <= 576) {
+			const menu = document.querySelector(".menu");
+			const menuBar = document.querySelector(".menu .menubar ul");
+			const mobileBar = document.querySelector(".menu .mobilebar");
+
+			if(mobileBar && !mobileBar.querySelector(".hamburger")) {
+				const dv = document.createElement("div");
+				dv.className = "hamburger";
+				dv.setAttribute("aria-label", "Toggle menu");l
+				dv.setAttribute("tabindex","0");
+				dv.innerHTML= '<span></span>';
+				mobileBar.appendChild(dv);
+				
+			}
+		}
 	});
 
 }) // end then
