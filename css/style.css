@@ -179,6 +179,15 @@
     flex-direction: column;
   }
 
+  .header .menu .menubar ul li .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    transform: 0 !important;
+    display: none;
+    
+  }
+
 
 
   
