@@ -116,6 +116,10 @@
     text-decoration-color: red;
 }
 
+.header .menu .menubar ul li:hover{
+    background-color: green;
+}
+
 @media (max-width: 576px) {
   .header {
     height: 5%;
@@ -179,6 +183,17 @@
     flex-direction: column;
   }
 
+  .header .menu .menubar ul {
+    height: auto;
+    width: 100%;
+  }
+
+  .header .menu .menubar ul li {
+    padding: 5% 0;
+  }
+
+  
+  
   .header .menu .menubar ul li .submenu {
     position: absolute;
     top: 100%;
