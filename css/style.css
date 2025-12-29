@@ -199,8 +199,13 @@
     left: 0%;
     transform: 0 !important;
     display: none;
-    
   }
+
+  .header .menu .menubar ul li:open-submenu .submenu {
+    display: block;
+  }
+
+  
 
 
 
