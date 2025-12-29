@@ -182,6 +182,7 @@
   .header .menu .menubar ul {
     height: auto;
     width: 100%;
+    display:none;
   }
 
   .header .menu .menubar ul li {
