@@ -46,6 +46,7 @@ fetch("header.html")
 				// second step --> voh menu items filter karna jisme submenu ho
 				const submenuExists = li.querySelectorAll(".submenu");
 				if (submenuExists) {
+					li.classList.add("has-submenu");
 					// third step --> identify karna jis menu item pr click hua ho
 					const toggle = document.createElement("button");
 					toggle.className = "submenu-toggle";
