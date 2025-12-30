@@ -48,7 +48,8 @@ fetch("header.html")
 				if (submenuExists) {
 					li.classList.add("has-submenu");
 					// third step --> identify karna jis menu item pr click hua ho
-					const toggle = document.createElement("button");
+					if(!li.querySelector(".submenu-toggle")) {
+						const toggle = document.createElement("button");
 					toggle.className = "submenu-toggle";
 					toggle.setAttribute("aria-expanded", "false");
 					toggle.innerHTML = '<span style="display:inline-block; transform:rotate(90deeg);">&#9656;</span>';
@@ -63,6 +64,7 @@ fetch("header.html")
 						toggle.setAttribute("aria-expanded", isOpen? "true" : "false");
 					});
 					// fouth step --> close already open / close all submenu
+					}
 					
 				}
 			});
