@@ -205,8 +205,8 @@
   .menu .menubar ul li .submenu li a {
     font-size: 1.5rem;
   }
-
-  .header .menu .menubar ul li:open-submenu > .submenu {
+  .header .menu.mobile-open .menubar ul {
+  .header .menu .menubar ul li.open-submenu > .submenu {
     display: block;
   }
 
