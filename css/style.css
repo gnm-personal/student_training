@@ -191,6 +191,7 @@
 
   .header .menu .menubar ul li a{
     font-size: 1rem;
+    text-color: white;
   }
   
   .header .menu .menubar ul li .submenu {
@@ -201,10 +202,21 @@
     display: none;
   }
 
-  .header .menu .menubar ul li:open-submenu .submenu {
+  .menu .menubar ul li .submenu li a {
+    font-size: 1.5rem;
+  }
+
+  .header .menu .menubar ul li:open-submenu > .submenu {
     display: block;
   }
 
+  .submenu-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0 6px;
+    cursor: pointer;
+  }
   
 
 
