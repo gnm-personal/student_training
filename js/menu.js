@@ -56,7 +56,7 @@ fetch("header.html")
 					const firstLink = li.querySelector("a");
 
 					// fifth step --> submenu display karna jo menu item click hua ho
-					submenuExists.addEventListener("click", function (ev) {
+					toggle.addEventListener("click", function (ev) {
 						ev.stopPropagation();
 						const isOpen = li.classList.toggle("open-submenu");
 						toggle.setAttribute("aria-expanded", isOpen? "true" : "false");
