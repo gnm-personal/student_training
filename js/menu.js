@@ -66,7 +66,10 @@ fetch("header.html")
 								const s_submenuExists = s_li.querySelectorAll(".submenu");
 								if(s_submenuExists.length > 0){
 									console.log(s_submenuExists);
-									s_submenuExists.classList.remove("open-submenu");
+									const checkIfOpenAlready = s_submenuExists.classList.toggle("open-submenu");
+									if (checkIfOpenAlready) {
+										s_submenuExists.classList.remove("open-submenu");
+									}
 								}
 							});
 							const isOpen = li.classList.toggle("open-submenu");
