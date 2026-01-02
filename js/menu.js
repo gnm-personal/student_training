@@ -65,6 +65,7 @@ fetch("header.html")
 							menuList.forEach(s_li =>{
 								const s_submenuExists = s_li.querySelectorAll(".submenu");
 								if(s_submenuExists.length > 0){
+									console.log(s_submenuExists);
 									s_submenuExists.classList.remove("open-submenu");
 								}
 							});
