@@ -45,7 +45,7 @@ fetch("header.html")
 			menuList.forEach(li => {
 				// second step --> voh menu items filter karna jisme submenu ho
 				const submenuExists = li.querySelectorAll(".submenu"); // will return undefined or actual value node
-				console.log(submenuExists);
+				// console.log(submenuExists);
 				if (submenuExists.length>0) {
 					li.classList.add("has-submenu");
 					// third step --> identify karna jis menu item pr click hua ho
