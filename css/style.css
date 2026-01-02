@@ -200,12 +200,15 @@
     position: absolute;
     top: 100%;
     left: 0%;
-    /* transform: 0 !important; */
+    transform: translateX(0);
+    width: 100%;
+    background-color: pink;
     display: none;
   }
 
   .menu .menubar ul li .submenu li a {
     font-size: 1.5rem;
+    color: green;
   }
   
   .header .menu .menubar ul li.open-submenu > .submenu {
