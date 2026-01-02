@@ -60,7 +60,7 @@ fetch("header.html")
 						firstLink.after(toggle);
 	
 						// fifth step --> submenu display karna jo menu item click hua ho
-						toggle.addEventListener("click", function (ev) {
+						li.addEventListener("click", function (ev) {
 							ev.stopPropagation();
 							const isOpen = li.classList.toggle("open-submenu");
 							toggle.setAttribute("aria-expanded", isOpen? "true" : "false");
