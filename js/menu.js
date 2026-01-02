@@ -62,6 +62,12 @@ fetch("header.html")
 						// fifth step --> submenu display karna jo menu item click hua ho
 						li.addEventListener("click", function (ev) {
 							ev.stopPropagation();
+							menuList.forEach(s_li =>{
+								const s_submenuExists = s_li.querySelectorAll(".submenu");
+								if(s_submemnuExists.length > 0){
+									s_submenuExists.classList.remove("open-submenu");
+								}
+							});
 							const isOpen = li.classList.toggle("open-submenu");
 							toggle.setAttribute("aria-expanded", isOpen? "true" : "false");
 						});
