@@ -66,10 +66,7 @@ fetch("header.html")
 								const s_submenuExists = s_li.querySelector(".submenu");
 								if(s_submenuExists){
 									console.log(s_submenuExists);
-									const checkIfOpenAlready = s_submenuExists.classList.toggle("open-submenu");
-									if (checkIfOpenAlready) {
-										s_li.classList.remove("open-submenu");
-									}
+									s_li.classList.remove("open-submenu");
 								}
 							});
 							const isOpen = li.classList.toggle("open-submenu");
