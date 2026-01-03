@@ -66,6 +66,7 @@ fetch("header.html")
 								const s_submenuExists = s_li.querySelector(".submenu");
 								if(s_submenuExists){
 									console.log(s_submenuExists);
+									console.log(s_li);
 									s_li.classList.remove("open-submenu");
 								}
 							});
