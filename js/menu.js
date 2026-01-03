@@ -63,12 +63,12 @@ fetch("header.html")
 						li.addEventListener("click", function (ev) {
 							ev.stopPropagation();
 							menuList.forEach(s_li =>{
-								const s_submenuExists = s_li.querySelectorAll(".submenu");
+								const s_submenuExists = s_li.querySelector(".submenu");
 								if(s_submenuExists.length > 0){
 									console.log(s_submenuExists);
 									const checkIfOpenAlready = s_submenuExists.classList.toggle("open-submenu");
 									if (checkIfOpenAlready) {
-										s_submenuExists.classList.remove("open-submenu");
+										s_li.classList.remove("open-submenu");
 									}
 								}
 							});
