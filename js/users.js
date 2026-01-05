@@ -9,12 +9,13 @@ document.getElementById("userForm").addEventListener("submit", async (e) => {
     return;
   }
 
-  /* 1️⃣ Check: email already exists? */
-  const { data: existingUser, error: checkError } = await supabase
-    .from("users")
-    .select("id")
-    .eq("email", email)
-    .maybeSingle();
+  /* 1️⃣ check existing */
+  const { data: existingUser, error: checkError } =
+    await supabaseClient
+      .from("users")
+      .select("id")
+      .eq("email", email)
+      .maybeSingle();
 
   if (checkError) {
     console.error(checkError);
@@ -27,22 +28,18 @@ document.getElementById("userForm").addEventListener("submit", async (e) => {
     return;
   }
 
-  /* 2️⃣ Insert new user */
-  const { error: insertError } = await supabase
-    .from("users")
-    .insert([
-      {
-        email: email,
-        password: password
-      }
-    ]);
+  /* 2️⃣ insert */
+  const { error: insertError } =
+    await supabaseClient
+      .from("users")
+      .insert([{ email, password }]);
 
   if (insertError) {
     console.error(insertError);
-    alert("Error creating user");
+    alert("Insert failed");
     return;
   }
 
   alert("User registered successfully ✅");
-  document.getElementById("userForm").reset();
+  e.target.reset();
 });
