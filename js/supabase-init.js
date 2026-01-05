@@ -10,5 +10,4 @@ if (supabase) {
   console.log("Database connected:", supabase);
 } else {
   console.log("Database not connected");
-  return 0;
 }
