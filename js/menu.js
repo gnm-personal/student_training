@@ -75,13 +75,10 @@ fetch("header.html")
 							toggle.setAttribute("aria-expanded", isOpen? "true" : "false");
 						});
 					}
-					
 				}
 			});
-			
 		}
 	});
-
 }) // end then
 .catch(err => {
     console.error("Header load failed:", err);
