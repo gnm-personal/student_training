@@ -8,14 +8,21 @@
     <script src="js/supabase-init.js" defer></script>
     <script src="js/users.js" defer></script>
   </head>
-  <body>
+  <body style="background-color:magenta;">
     <!-- <div id="header"></div> -->
-    <div>
+    <div style="padding: 5% 10%; align-items: center; justify-content: center;">
       <form id="userForm">
-        <input type="text" id="name" placeholder="Name" required />
-        <input type="email" id="email" placeholder="Email" required />
-        <input type="password" id="password" placeholder="Password" required />
-        <button type="submit">Register</button>
+        <table>
+          <tr>
+            <th colspan="2">Registration Form</th>
+          </tr>
+          <tr>
+            <td>Name: </td>
+            <td>
+              <input type="text" placeholder="Enter your name here" id="name">
+            </td>
+          </tr>
+        </table>
       </form>
     </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script> -->
