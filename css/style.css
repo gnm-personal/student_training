@@ -136,14 +136,22 @@
 th {
   width: 100%;
   color: white;
+  font-size: 2vw;
 }
 
 td {
   width: 100%;
 }
 
+input {
+  font-size: 1vw;
+  width: 40vw;
+  text-align: center;
+}
+
 button {
   width: 100%;
+  font-size: 1.5vw;
 }
 
 @media (max-width: 576px) {
