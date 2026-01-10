@@ -126,7 +126,7 @@
 }
 
 .signInPage {
-  background-image: url("/images/lms.png");
+  background-image: url("../images/lms.png");
   /* style="background-color:magenta;" */
 }
 
