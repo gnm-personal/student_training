@@ -126,8 +126,12 @@
 }
 
 .signInPage {
+  width: 100vw;
+  height: 100vh;
   background-image: url("../images/lms.png");
-  /* style="background-color:magenta;" */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 th {
