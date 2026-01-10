@@ -130,6 +130,15 @@
   /* style="background-color:magenta;" */
 }
 
+th {
+  width: 40%;
+  text-color: white;
+}
+
+td {
+  width: 40%;
+}
+
 @media (max-width: 576px) {
   .header {
     height: 5%;
