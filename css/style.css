@@ -132,11 +132,15 @@
 
 th {
   width: 40%;
-  text-color: white;
+  color: white;
 }
 
 td {
   width: 40%;
+}
+
+button {
+  width: 100%;
 }
 
 @media (max-width: 576px) {
