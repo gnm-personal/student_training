@@ -124,7 +124,20 @@
   background-size: cover;
 }
 
+.form {
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
 
+#userform {
+  width: 50vw;
+}
+
+h1 {
+  font-size: 10vw;
+}
 
 @media (max-width: 576px) {
   .header {
