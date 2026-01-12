@@ -147,11 +147,19 @@ input {
   font-size: 1vw;
   width: 40vw;
   text-align: center;
+  border: 1.5vw solid grey;
+  border-radius: 1.5vw;
 }
 
 button {
   width: 100%;
   font-size: 1.5vw;
+  border: 1.5vw solid grey;
+  border-radius: 1.5vw;
+}
+
+tr {
+  line-height: 0;
 }
 
 @media (max-width: 576px) {
