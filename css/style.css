@@ -120,7 +120,11 @@
   width: 100vw;
   height: 100vh;
   background-image: url("../images/lms.png");
+  background-position: center;
+  background-size: cover;
 }
+
+
 
 @media (max-width: 576px) {
   .header {
