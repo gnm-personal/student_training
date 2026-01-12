@@ -146,6 +146,9 @@ h1 {
 
 input {
   width: 50vw;
+  font-size: 2vw;
+  text-align: center;
+  border: none;
 }
 
 @media (max-width: 576px) {
