@@ -144,7 +144,7 @@ h1 {
 }
 
 input {
-  
+  width: 50%;
 }
 
 @media (max-width: 576px) {
