@@ -144,12 +144,16 @@ h1 {
   text-align: center;
 }
 
-input {
+input, button {
   width: 50vw;
   font-size: 2vw;
   text-align: center;
   border: 0.15vw solid grey;
   border-radius: 0.15vw;
+}
+
+input:focus {
+  outline: none;
 }
 
 @media (max-width: 576px) {
