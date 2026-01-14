@@ -9,7 +9,7 @@
 //   console.log("Database not connected");
 // }
 
-fetch("./data.json")
+fetch("js/data.json")
   .then(res => res.json())
   .then(config => {
     const supabaseClient = window.supabase.createClient(
