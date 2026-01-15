@@ -1,4 +1,4 @@
-document.getElementById("userForm").addEventListener("submit", async (e) => {
+document.getElementById("userform").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const name = document.getElementById("name").value.trim();
