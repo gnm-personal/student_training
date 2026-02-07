@@ -1,41 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Barcode Scanner</title>
+  <title>Book Barcode Scanner</title>
+
+  <!-- QuaggaJS for 1D Barcode -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f4f4f4;
+    }
+    #scanner {
+      width: 400px;
+      height: 300px;
+      margin: auto;
+      border: 2px solid #333;
+      background: #000;
+    }
+    #result {
+      background: #fff;
+      width: 400px;
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    img {
+      max-width: 150px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
+
 <body>
 
-<h2>Scan Barcode</h2>
-<div id="scanner" style="width:400px; height:300px;"></div>
-<p><b>Barcode:</b> <span id="result"></span></p>
+<h2>📚 Scan Book Barcode (ISBN)</h2>
+
+<div id="scanner"></div>
+
+<div id="result">Scan a book barcode…</div>
 
 <script>
+// 1️⃣ Start Camera + Barcode Scanner
 Quagga.init({
   inputStream: {
-    name: "Live",
     type: "LiveStream",
-    target: document.querySelector('#scanner')
+    target: document.querySelector("#scanner"),
+    constraints: { facingMode: "environment" }
   },
   decoder: {
-    readers: [
-      "ean_reader",
-      "ean_8_reader",
-      "upc_reader",
-      "code_128_reader"
-    ]
+    readers: ["ean_reader"] // ISBN = EAN-13
   }
 }, function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  Quagga.start();
+  if (!err) Quagga.start();
 });
 
+// 2️⃣ When Barcode Detected
 Quagga.onDetected(function(data) {
-  document.getElementById("result").innerText =
-    data.codeResult.code;
+  Quagga.stop(); // stop after one scan
+
+  let isbn = data.codeResult.code;
+
+  document.getElementById("result").innerHTML =
+    "<b>ISBN:</b> " + isbn + "<br>Fetching book details…";
+
+  // 3️⃣ Fetch book details from Open Library
+  fetch("https://openlibrary.org/isbn/" + isbn + ".json")
+    .then(r => {
+      if (!r.ok) throw "Not found";
+      return r.json();
+    })
+    .then(book => {
+      let html = `
+        <h3>${book.title || "Title not available"}</h3>
+        <p><b>Publisher:</b> ${book.publishers ? book.publishers.join(", ") : "Not available"}</p>
+        <p><b>Publication Year:</b> ${book.publish_date || "Not available"}</p>
+        <p><b>Language:</b> ${book.languages ? book.languages.map(l => l.key.replace("/languages/","")) : "Not available"}</p>
+      `;
+
+      if (book.covers) {
+        html += `<img src="https://covers.openlibrary.org/b/id/${book.covers[0]}-M.jpg">`;
+      }
+
+      document.getElementById("result").innerHTML = html;
+    })
+    .catch(() => {
+      document.getElementById("result").innerHTML =
+        "❌ Book details not available in public database.";
+    });
 });
 </script>
 
