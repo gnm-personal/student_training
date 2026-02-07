@@ -1,130 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Book ISBN Barcode Scanner</title>
+<meta charset="UTF-8">
+<title>Book ISBN Scanner – Full API Response</title>
 
-  <!-- QuaggaJS (1D Barcode Scanner) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      text-align: center;
-      padding: 20px;
-    }
-
-    #scanner {
-      width: 100%;
-      max-width: 420px;
-      height: 300px;
-      margin: auto;
-      border: 2px solid #333;
-      position: relative;
-      background: transparent;
-    }
-
-    #scanner video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    #result {
-      max-width: 420px;
-      margin: 15px auto;
-      background: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    img {
-      max-width: 150px;
-      margin-top: 10px;
-    }
-  </style>
+<style>
+body{
+  font-family: monospace;
+  background:#111;
+  color:#0f0;
+  text-align:center;
+}
+#scanner{
+  width:100%;
+  max-width:420px;
+  height:300px;
+  margin:auto;
+  border:2px solid #0f0;
+}
+#scanner video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+pre{
+  text-align:left;
+  max-width:95%;
+  margin:20px auto;
+  background:#000;
+  padding:15px;
+  overflow:auto;
+  border:1px solid #0f0;
+}
+</style>
 </head>
 
 <body>
 
-  <h2>📚 Scan Book Barcode (ISBN)</h2>
-  <p>Camera allow karein aur book ka barcode dikhayein</p>
+<h2>📚 ISBN Barcode Scanner (RAW RESPONSE)</h2>
+<p>Scan book barcode → full API JSON dikhega</p>
 
-  <div id="scanner"></div>
+<div id="scanner"></div>
 
-  <div id="result">Waiting for barcode scan…</div>
+<h3 id="isbn"></h3>
+
+<pre id="output">Waiting for scan…</pre>
 
 <script>
-  // ---------- INIT CAMERA & BARCODE SCANNER ----------
-  Quagga.init({
-    inputStream: {
-      name: "Live",
-      type: "LiveStream",
-      target: document.querySelector("#scanner"),
-      constraints: {
-        facingMode: "environment",
-        width: 640,
-        height: 480
+Quagga.init({
+  inputStream:{
+    type:"LiveStream",
+    target:document.querySelector("#scanner"),
+    constraints:{facingMode:"environment"}
+  },
+  locate:true,
+  decoder:{readers:["ean_reader"]}
+}, function(err){
+  if(err){ alert(err); return; }
+  Quagga.start();
+});
+
+Quagga.onDetected(function(data){
+  let isbn = data.codeResult.code;
+  if(isbn.length !== 13) return;
+
+  Quagga.stop();
+  document.getElementById("isbn").innerText = "ISBN: " + isbn;
+  document.getElementById("output").innerText = "Fetching edition data…";
+
+  // -------- EDITION DATA --------
+  fetch("https://openlibrary.org/isbn/"+isbn+".json")
+    .then(r=>r.json())
+    .then(edition=>{
+      let result = {
+        ISBN: isbn,
+        EDITION_RESPONSE: edition
+      };
+
+      // -------- WORK DATA (if exists) --------
+      if(edition.works && edition.works.length > 0){
+        let workKey = edition.works[0].key;
+
+        fetch("https://openlibrary.org"+workKey+".json")
+          .then(r=>r.json())
+          .then(work=>{
+            result.WORK_RESPONSE = work;
+            document.getElementById("output").innerText =
+              JSON.stringify(result, null, 2);
+          })
+          .catch(()=>{
+            document.getElementById("output").innerText =
+              JSON.stringify(result, null, 2);
+          });
+
+      } else {
+        document.getElementById("output").innerText =
+          JSON.stringify(result, null, 2);
       }
-    },
-    locate: true,
-    numOfWorkers: 2,
-    frequency: 5,
-    decoder: {
-      readers: ["ean_reader"] // ISBN = EAN-13
-    }
-  }, function(err) {
-    if (err) {
-      alert("Camera error: " + err);
-      return;
-    }
-    Quagga.start();
-  });
-
-  // ---------- ON BARCODE DETECT ----------
-  Quagga.onDetected(function(data) {
-    let isbn = data.codeResult.code;
-
-    // safety: ISBN should be 13 digits
-    if (isbn.length !== 13) return;
-
-    Quagga.stop(); // stop scanning after success
-
-    document.getElementById("result").innerHTML =
-      "<b>ISBN Detected:</b> " + isbn + "<br>Fetching book details…";
-
-    // ---------- FETCH BOOK DETAILS ----------
-    fetch("https://openlibrary.org/isbn/" + isbn + ".json")
-      .then(res => {
-        if (!res.ok) throw "No data";
-        return res.json();
-      })
-      .then(book => {
-        let html = `
-          <h2>${book || "details not available"}</h2>
-          <h3>${book.title || "Title not available"}</h3>
-          <p><b>Publisher:</b> ${book.publishers ? book.publishers.join(", ") : "Not available"}</p>
-          <p><b>Publication Year:</b> ${book.publish_date || "Not available"}</p>
-          <p><b>Language:</b> ${
-            book.languages
-              ? book.languages.map(l => l.key.replace("/languages/","")).join(", ")
-              : "Not available"
-          }</p>
-        `;
-
-        if (book.covers && book.covers.length > 0) {
-          html += `<img src="https://covers.openlibrary.org/b/id/${book.covers[0]}-M.jpg">`;
-        }
-
-        document.getElementById("result").innerHTML = html;
-      })
-      .catch(() => {
-        document.getElementById("result").innerHTML =
-          "❌ Book details not found in public database.";
-      });
-  });
+    })
+    .catch(()=>{
+      document.getElementById("output").innerText =
+        "❌ No data found for this ISBN";
+    });
+});
 </script>
 
 </body>
