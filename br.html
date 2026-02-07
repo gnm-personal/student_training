@@ -103,6 +103,7 @@
       })
       .then(book => {
         let html = `
+          <h2>${book || "details not available"}</h2>
           <h3>${book.title || "Title not available"}</h3>
           <p><b>Publisher:</b> ${book.publishers ? book.publishers.join(", ") : "Not available"}</p>
           <p><b>Publication Year:</b> ${book.publish_date || "Not available"}</p>
