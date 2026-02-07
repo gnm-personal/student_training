@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Book ISBN Scanner – Full API Response</title>
+<title>Book ISBN Scanner – Raw Preserved</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
 
@@ -26,12 +26,19 @@ body{
   object-fit:cover;
 }
 pre{
-  text-align:left;
   max-width:95%;
-  margin:20px auto;
+  margin:15px auto;
   background:#000;
   padding:15px;
   overflow:auto;
+  text-align:left;
+}
+#resolved{
+  max-width:420px;
+  margin:15px auto;
+  background:#222;
+  padding:15px;
+  color:#fff;
   border:1px solid #0f0;
 }
 </style>
@@ -39,14 +46,13 @@ pre{
 
 <body>
 
-<h2>📚 ISBN Barcode Scanner (RAW RESPONSE)</h2>
-<p>Scan book barcode → full API JSON dikhega</p>
+<h2>📚 ISBN Scanner (RAW RESPONSE PRESERVED)</h2>
 
 <div id="scanner"></div>
 
-<h3 id="isbn"></h3>
+<div id="resolved">Waiting for scan…</div>
 
-<pre id="output">Waiting for scan…</pre>
+<pre id="raw">RAW API RESPONSE WILL APPEAR HERE</pre>
 
 <script>
 Quagga.init({
@@ -67,44 +73,69 @@ Quagga.onDetected(function(data){
   if(isbn.length !== 13) return;
 
   Quagga.stop();
-  document.getElementById("isbn").innerText = "ISBN: " + isbn;
-  document.getElementById("output").innerText = "Fetching edition data…";
 
-  // -------- EDITION DATA --------
+  let RAW = { ISBN: isbn };
+
+  document.getElementById("resolved").innerText =
+    "ISBN detected: " + isbn + "\nFetching data…";
+
+  // -------- EDITION --------
   fetch("https://openlibrary.org/isbn/"+isbn+".json")
     .then(r=>r.json())
     .then(edition=>{
-      let result = {
-        ISBN: isbn,
-        EDITION_RESPONSE: edition
-      };
+      RAW.EDITION = edition;
 
-      // -------- WORK DATA (if exists) --------
-      if(edition.works && edition.works.length > 0){
-        let workKey = edition.works[0].key;
-
-        fetch("https://openlibrary.org"+workKey+".json")
-          .then(r=>r.json())
-          .then(work=>{
-            result.WORK_RESPONSE = work;
-            document.getElementById("output").innerText =
-              JSON.stringify(result, null, 2);
-          })
-          .catch(()=>{
-            document.getElementById("output").innerText =
-              JSON.stringify(result, null, 2);
-          });
-
-      } else {
-        document.getElementById("output").innerText =
-          JSON.stringify(result, null, 2);
+      let workKey = edition.works?.[0]?.key;
+      if(!workKey){
+        finish(RAW, null, null);
+        return;
       }
+
+      // -------- WORK --------
+      fetch("https://openlibrary.org"+workKey+".json")
+        .then(r=>r.json())
+        .then(work=>{
+          RAW.WORK = work;
+
+          let authorKey = work.authors?.[0]?.author?.key;
+          if(!authorKey){
+            finish(RAW, work, null);
+            return;
+          }
+
+          // -------- AUTHOR --------
+          fetch("https://openlibrary.org"+authorKey+".json")
+            .then(r=>r.json())
+            .then(author=>{
+              RAW.AUTHOR = author;
+              finish(RAW, work, author);
+            })
+            .catch(()=>finish(RAW, work, null));
+        })
+        .catch(()=>finish(RAW, null, null));
     })
     .catch(()=>{
-      document.getElementById("output").innerText =
+      document.getElementById("resolved").innerText =
         "❌ No data found for this ISBN";
     });
 });
+
+function finish(RAW, work, author){
+  // -------- RESOLVED (SEPARATE, NON-DESTRUCTIVE) --------
+  let resolved = {
+    title: work?.title || RAW.EDITION?.title || "NA",
+    author_name: author?.name || "NA"
+  };
+
+  document.getElementById("resolved").innerText =
+    "RESOLVED VIEW\n" +
+    "Title: " + resolved.title + "\n" +
+    "Author: " + resolved.author_name;
+
+  // -------- RAW JSON UNCHANGED --------
+  document.getElementById("raw").innerText =
+    JSON.stringify(RAW, null, 2);
+}
 </script>
 
 </body>
