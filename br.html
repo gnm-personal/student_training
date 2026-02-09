@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ISBN Scanner – Single File Stable</title>
+<title>ISBN Scanner – Clean No Quota</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
 
@@ -12,8 +12,8 @@ body{
   background:#111;
   color:#0f0;
   text-align:center;
-  margin:0;
   padding:20px;
+  margin:0;
 }
 #scanner{
   position:relative;
@@ -44,6 +44,7 @@ input,button{
   background:#222;
   color:#fff;
   border:1px solid #0f0;
+  white-space:pre-line;
 }
 pre{
   max-width:95%;
@@ -58,7 +59,7 @@ pre{
 
 <body>
 
-<h3>📚 ISBN Scanner (Stable Single File)</h3>
+<h3>📚 ISBN Scanner (No Quota Version)</h3>
 
 <input id="isbnInput" placeholder="Enter ISBN-13 manually">
 <button onclick="manualFetch()">Fetch</button>
@@ -103,7 +104,7 @@ function startScanner(){
 function manualFetch(){
   let isbn=document.getElementById("isbnInput").value.trim();
   if(!/^\d{13}$/.test(isbn)){
-    alert("Valid 13-digit ISBN only");
+    alert("Enter valid 13-digit ISBN");
     return;
   }
   fetchISBN(isbn);
@@ -111,38 +112,38 @@ function manualFetch(){
 
 function fetchISBN(isbn){
   document.getElementById("resolved").innerText=
-    "ISBN: "+isbn+"\nFetching…";
+    "ISBN: "+isbn+"\nFetching from OpenLibrary…";
 
   let RAW={ISBN:isbn};
 
   fetch("https://openlibrary.org/isbn/"+isbn+".json")
-    .then(r=>{if(!r.ok) throw 0; return r.json();})
-    .then(edition=>{
-      RAW.OPENLIBRARY=edition;
-      return fetchGoogle(isbn,RAW);
+    .then(r=>{
+      if(!r.ok) throw 0;
+      return r.json();
     })
-    .catch(()=>{
-      return fetchGoogle(isbn,RAW);
-    });
-}
+    .then(edition=>{
+      RAW.EDITION=edition;
 
-function fetchGoogle(isbn,RAW){
-  fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:"+isbn)
-    .then(r=>r.json())
-    .then(g=>{
-      RAW.GOOGLE=g;
-      let info=g.items?.[0]?.volumeInfo||{};
+      let title=edition.title||"NA";
+      let year=edition.publish_date||"NA";
+      let publisher=edition.publishers?.[0]||"NA";
+
       document.getElementById("resolved").innerText=
         "RESOLVED\n"+
-        "Title: "+(info.title||"NA")+"\n"+
-        "Author: "+(info.authors?.[0]||"NA")+"\n"+
-        "Publisher: "+(info.publisher||"NA")+"\n"+
-        "Year: "+(info.publishedDate||"NA");
+        "Title: "+title+"\n"+
+        "Publisher: "+publisher+"\n"+
+        "Year: "+year+"\n"+
+        "(Author data not always available)";
+
       document.getElementById("raw").innerText=
         JSON.stringify(RAW,null,2);
     })
     .catch(()=>{
-      document.getElementById("resolved").innerText="❌ No data found";
+      document.getElementById("resolved").innerText=
+        "❌ ISBN not found in OpenLibrary\n"+
+        "This is common for many Indian books.";
+      document.getElementById("raw").innerText=
+        JSON.stringify(RAW,null,2);
     });
 }
 </script>
